@@ -26,8 +26,7 @@ class MultiChainClient
         $response = $this->rpc->execute($method, $params);
         if($response->error) 
         {
-            if(is_object($response->error)) throw new \Exception($response->error->message);
-            throw new \Exception($response->error);
+            throw new \Exception($response->error->message);
         }
         return $response->result;
     }

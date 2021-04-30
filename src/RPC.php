@@ -44,7 +44,8 @@ class RPC
         if($info["http_code"] == 0)
         {
             $result = new \stdClass;
-            $result->error = "Could not connect to ".$this->host.":".$this->port;
+            $result->error = new \stdClass;
+            $result->error->message = "Could not connect to ".$this->host.":".$this->port;
             $result->info = $info;
             return $result;
         }
@@ -53,7 +54,8 @@ class RPC
         if(is_object($result)) return $result;
 
         $result = new \stdClass;
-        $result->error = "Response was not valid JSON.";
+        $result->error = new \stdClass;
+        $result->error->message = "Response was not valid JSON.";
         $result->info = $info;
         return $result;
     }
