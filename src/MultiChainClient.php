@@ -14,10 +14,10 @@ class MultiChainClient
 
     public function __construct($host = "", $port = 0, $user = "", $pass = "")
     {
-        $this->host = strlen($host) ? $host : env('MULTICHAIN_RPC_HOST');
-        $this->port = $port ? $port : env('MULTICHAIN_RPC_PORT');
-        $this->user = strlen($user) ? $user : env('MULTICHAIN_RPC_USER');
-        $this->pass = strlen($pass) ? $pass : env('MULTICHAIN_RPC_PASS');
+        $this->host = strlen($host) ? $host : config('multichain.host');
+        $this->port = $port ? $port : config('multichain.port');
+        $this->user = strlen($user) ? $user : config('multichain.user');
+        $this->pass = strlen($pass) ? $pass : config('multichain.pass');
         $this->rpc = new RPC($this->host, $this->port, $this->user, $this->pass);
     }
 
