@@ -3,6 +3,7 @@
 namespace MetaverseSystems\MultiChain;
 
 use Illuminate\Support\ServiceProvider;
+use MetaverseSystems\MultiChain\Commands\InstallMultiChainDaemon;
 
 class MultiChainProvider extends ServiceProvider
 {
@@ -13,7 +14,9 @@ class MultiChainProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->commands([
+            InstallMultiChainDaemon::class
+        ]);
     }
 
     /**
