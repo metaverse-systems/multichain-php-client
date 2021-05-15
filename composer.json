@@ -21,9 +21,9 @@
             "providers": [
                 "MetaverseSystems\\MultiChain\\MultiChainProvider"
             ],
-            "aliases": [
+            "aliases": {
                 "MultiChain": "MetaverseSystems\\MultiChain\\Facades\\MultiChain"
-            ]
+            }
         }
     }
 }
