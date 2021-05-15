@@ -6,19 +6,11 @@ use MetaverseSystems\MultiChain\RPC;
 
 class MultiChainClient
 {
-    private $host;
-    private $port;
-    private $user;
-    private $pass;
     private $rpc;
 
-    public function __construct($host = "", $port = 0, $user = "", $pass = "")
+    public function __construct($host, $port, $user, $pass)
     {
-        $this->host = strlen($host) ? $host : config('multichain.host');
-        $this->port = $port ? $port : config('multichain.port');
-        $this->user = strlen($user) ? $user : config('multichain.user');
-        $this->pass = strlen($pass) ? $pass : config('multichain.pass');
-        $this->rpc = new RPC($this->host, $this->port, $this->user, $this->pass);
+        $this->rpc = new RPC($host, $port, $user, $pass);
     }
 
     function __call($method, $params)
