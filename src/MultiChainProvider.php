@@ -7,6 +7,7 @@ use MetaverseSystems\MultiChain\Commands\InstallMultiChainDaemon;
 use MetaverseSystems\MultiChain\MultiChainClient;
 use MetaverseSystems\MultiChain\Commands\CreateChain;
 use MetaverseSystems\MultiChain\Commands\StartChain;
+use MetaverseSystems\MultiChain\Commands\ConnectChain;
 
 class MultiChainProvider extends ServiceProvider
 {
@@ -20,7 +21,8 @@ class MultiChainProvider extends ServiceProvider
         $this->commands([
             InstallMultiChainDaemon::class,
             CreateChain::class,
-            StartChain::class
+            StartChain::class,
+            ConnectChain::class
         ]);
     }
 
