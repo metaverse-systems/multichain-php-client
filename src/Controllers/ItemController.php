@@ -5,7 +5,7 @@ namespace MetaverseSystems\MultiChain\Controllers;
 use Illuminate\Http\Request;
 use MetaverseSystems\MultiChain\Facades\MultiChain;
 
-class StreamController extends \App\Http\Controllers\Controller
+class ItemController extends \App\Http\Controllers\Controller
 {
     public function __construct()
     {
@@ -17,9 +17,14 @@ class StreamController extends \App\Http\Controllers\Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($chain)
+    public function index($chain, $stream)
     {
-        return $this->chain->liststreams("*", true);
+        $items = MultiChain::liststreamitems($stream, true);
+        foreach($items as $item)
+        {
+            $item->plain = hex2bin($item->data);
+        }
+        return response()->json($items, 200);
     }
 
     /**
@@ -38,12 +43,13 @@ class StreamController extends \App\Http\Controllers\Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($chain, $stream, Request $request)
     {
-        $name = $request->input('name');
-        $open = ($request->input('open') == 0) ? false : true;
+        $key = $request->input("key");
+        $item = bin2hex(json_encode($request->input("item")));
 
-        return MultiChain::create('stream', $name, $open);
+        $txid = MultiChain::publish($stream, $key, $item);
+        return $this->show($chain, $stream, $key);
     }
 
     /**
@@ -51,15 +57,18 @@ class StreamController extends \App\Http\Controllers\Controller
      *
      * @param  string $chain
      * @param  string  $stream
+     * @param  string $item
      * @return \Illuminate\Http\Response
      */
-    public function show($chain, $stream)
+    public function show($chain, $stream, $item)
     {
-        $data = [
-            'stream' => $this->chain->getstreaminfo($stream, true),
-            'permissions' => $this->chain->listpermissions($stream.".*", "*", true)
-        ];
-        return $data;
+        $items = MultiChain::liststreamkeyitems($stream, $item, true);
+
+        foreach($items as $item)
+        {
+            $item->plain = hex2bin($item->data);
+        }
+        return response()->json($items, 200);
     }
 
     /**

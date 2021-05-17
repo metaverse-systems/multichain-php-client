@@ -1,12 +1,24 @@
 @url = http://localhost:8000
-@name = chain2
-@id = apistream
+@blockchain = chain2
+@stream = apistream
+
 ###
 # Get list of streams
-GET {{url}}/api/blockchain/{{name}}/stream
+GET {{url}}/api/blockchain/{{blockchain}}/stream
 Accept: application/json
 
 ###
-# Get info for stream {id} on blockchain {name}
-GET {{url}}/api/blockchain/{{name}}/stream/{{id}}
+# Get info for stream {stream} on blockchain {blockchain}
+GET {{url}}/api/blockchain/{{blockchain}}/stream/{{stream}}
 Accept: application/json
+
+###
+# Create new stream
+POST {{url}}/api/blockchain/{{blockchain}}/stream
+Accept: application/json
+content-type: application/json
+
+{
+    "name": "mystream",
+    "open": true
+}

@@ -5,7 +5,7 @@ namespace MetaverseSystems\MultiChain\Controllers;
 use Illuminate\Http\Request;
 use MetaverseSystems\MultiChain\Facades\MultiChain;
 
-class StreamController extends \App\Http\Controllers\Controller
+class NodeController extends \App\Http\Controllers\Controller
 {
     public function __construct()
     {
@@ -19,7 +19,7 @@ class StreamController extends \App\Http\Controllers\Controller
      */
     public function index($chain)
     {
-        return $this->chain->liststreams("*", true);
+        return $this->chain->getpeerinfo();
     }
 
     /**
@@ -38,28 +38,24 @@ class StreamController extends \App\Http\Controllers\Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($chain, Request $request)
     {
-        $name = $request->input('name');
-        $open = ($request->input('open') == 0) ? false : true;
-
-        return MultiChain::create('stream', $name, $open);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  string $chain
-     * @param  string  $stream
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($chain, $stream)
+    public function show($chain, $node)
     {
-        $data = [
-            'stream' => $this->chain->getstreaminfo($stream, true),
-            'permissions' => $this->chain->listpermissions($stream.".*", "*", true)
+        return [
+            'runtimeparams'=>$this->chain->getruntimeparams(),
+            'info'=>$this->chain->getinfo(),
+            'initstatus'=>$this->chain->getinitstatus()
         ];
-        return $data;
     }
 
     /**

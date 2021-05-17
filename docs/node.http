@@ -1,0 +1,13 @@
+@url = http://localhost:8000
+@blockchain = chain2
+@node = 13YEvKf1VxQ71ZrizhiXkd3PZYGvNHD66yUw4q
+
+###
+# Get list of nodes
+GET {{url}}/api/blockchain/{{blockchain}}/node
+Accept: application/json
+
+###
+# Get info for node {node} on blockchain {blockchain}
+GET {{url}}/api/blockchain/{{blockchain}}/node/{{node}}
+Accept: application/json
