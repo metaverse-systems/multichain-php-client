@@ -31,6 +31,11 @@ class MultiChainProvider extends ServiceProvider
      */
     public function boot()
     {
+        if(!$this->app->routesAreCached())
+        {
+            require __DIR__.'/Routes.php';
+        }
+
         $this->publishes([
             __DIR__.'/../config/config.php' => config_path('multichain.php'),
         ], 'config');

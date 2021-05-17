@@ -1,0 +1,12 @@
+@url = http://localhost:8000
+@name = chain2
+
+###
+# Get list of blockchains
+GET {{url}}/api/blockchain
+Accept: application/json
+
+###
+# Get info for blockchain {name}
+GET {{url}}/api/blockchain/{{name}}
+Accept: application/json

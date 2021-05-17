@@ -1,0 +1,12 @@
+@url = http://localhost:8000
+@name = chain2
+@id = apistream
+###
+# Get list of streams
+GET {{url}}/api/blockchain/{{name}}/stream
+Accept: application/json
+
+###
+# Get info for stream {id} on blockchain {name}
+GET {{url}}/api/blockchain/{{name}}/stream/{{id}}
+Accept: application/json

@@ -22,4 +22,9 @@ class MultiChainClient
         }
         return $response->result;
     }
+
+    function get()
+    {
+        return $this;
+    }
 }
