@@ -20,5 +20,6 @@ content-type: application/json
 
 {
     "name": "mystream",
-    "open": true
+    "open": true,
+    "subscribe": true
 }
