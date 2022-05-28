@@ -11,7 +11,7 @@
     ],
     "require": {
         "splitbrain/php-archive": "^1.2",
-        "jackiedo/dotenv-editor": "^1.2"
+        "jackiedo/dotenv-editor": "^2.0.1"
     },
     "autoload": {
         "psr-4": {

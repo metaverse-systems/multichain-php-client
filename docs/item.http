@@ -1,7 +1,7 @@
 @url = http://localhost:8000
 @blockchain = chain2
 @stream = mystream
-@item = ca14580e-b74d-11eb-b91a-47a774384764
+@item = ca14580e-b74d-11eb-b91a-47a774384774
 
 ###
 # Get list of items
@@ -13,13 +13,14 @@ Accept: application/json
 GET {{url}}/api/blockchain/{{blockchain}}/stream/{{stream}}/item/{{item}}
 Accept: application/json
 
+###
 # Create new item
 POST {{url}}/api/blockchain/{{blockchain}}/stream/{{stream}}/item
 Accept: application/json
 content-type: application/json
 
 {
-  "key": "ca14580e-b74d-11eb-b91a-47a774384764",
+  "key": "{{item}}",
   "item": {
     "info": "1",
     "info2": "2"

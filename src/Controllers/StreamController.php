@@ -45,7 +45,7 @@ class StreamController extends \App\Http\Controllers\Controller
 
         $txid = MultiChain::create('stream', $name, $open);
 
-        if($request->('subscribe')) MultiChain::subscribe($name);
+        if($request->input('subscribe')) MultiChain::subscribe($name);
 
         return $txid;
     }
