@@ -14,18 +14,6 @@ composer require metaverse-systems/multichain-php-client
 php artisan vendor:publish --provider="MetaverseSystems\MultiChain\MultiChainProvider" --tag=config
 ```
 
-* Install multichain daemon 
-
-```
-php artisan multichain:daemon-install
-```
-
-* Create block chain, .env will be configured
-
-```
-php artisan multichain:create mychain
-```
-
 * To use:
 
 ```
