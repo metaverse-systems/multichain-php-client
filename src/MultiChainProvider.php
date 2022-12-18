@@ -18,9 +18,6 @@ class MultiChainProvider extends ServiceProvider
     public function register()
     {
         $this->commands([
-            InstallMultiChainDaemon::class,
-            CreateChain::class,
-            StartChain::class
         ]);
     }
 

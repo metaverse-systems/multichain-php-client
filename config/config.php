@@ -7,6 +7,5 @@ return [
     'pass' => env('MULTICHAIN_RPC_PASS'),
     'middleware' => [
         'api',
-        'auth:api'
     ]
 ];
